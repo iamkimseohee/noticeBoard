@@ -1,16 +1,22 @@
 <script>
   import { supabase } from "$lib/supabaseClient";
+  import moment from "moment";
+
   
   
   let notices = [];
   let name = '';
   let content = '';
+
   
 
 
   async function handleSubmit() {
+    
     try {
-      const { data, error } = await supabase.from('notice').insert([{ name, content }]);
+  const now = moment().format("YYYY.MM.DD HH:mm"); //현재 시간
+
+      const { data, error } = await supabase.from('notice').insert([{ name, content, now:now }]);
       if (error) {
         throw error;
       }

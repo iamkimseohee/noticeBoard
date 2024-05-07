@@ -1,7 +1,7 @@
 <script>
   import { supabase } from '$lib/supabaseClient.js';
     export let data;
-
+console.log(data)
     function handleDelete() {
     const checkedIds = []; // 체크된 공지 항목의 ID를 저장할 배열
     const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked'); // 체크된 체크박스들을 선택
@@ -23,7 +23,7 @@
         throw error;
       }
       console.log('Notice deleted successfully');
-    //   window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.error('Error deleting notice:', error.message);
     }
@@ -39,7 +39,7 @@
       <div>
         <input type="checkbox" value={notice.id} />
 
-        {notice.name} {notice.content}
+        {notice.name} {notice.content} {notice.now}
         
     </div>
     {/each}
